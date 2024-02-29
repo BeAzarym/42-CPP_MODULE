@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:05:36 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/02/26 16:05:37 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:39:31 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ class Contact
 {
 	private: 
 
-	std::string FirstName;
-	std::string LastName;
-	std::string Nickname;
-	std::string PhoneNumber;
-	std::string Secret;
+	std::string _FirstName;
+	std::string _LastName;
+	std::string _Nickname;
+	std::string _PhoneNumber;
+	std::string _Secret;
 
 	public:
 

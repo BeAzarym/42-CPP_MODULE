@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:05:10 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/02/29 15:22:08 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:40:43 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 class PhoneBook
 {
   private:
-	Contact Contacts[8];
-	int Size;
-	int Pos;
+	Contact _Contacts[8];
+	int _Size;
+	int _Pos;
 
-	std::string formateData(std::string str);
-	std::string getDataFromInput(std::string Data);
-	void printPhoneBook();
-	void printContact(int index);
+	std::string _formateData(std::string str);
+	std::string _getDataFromInput(std::string Data);
+	void _printPhoneBook();
+	void _printContact(int index);
 
   public:
 	PhoneBook();
