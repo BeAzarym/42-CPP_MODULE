@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 19:29:07 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/03/03 20:14:27 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:26:01 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ std::string Replace::Replaceline(void)
 {
 	size_t	index;
 
-	std::string Nounouille;
-	std::getline(this->_Infile, Nounouille);
+	std::string line;
+	std::getline(this->_Infile, line);
 	if ((this->_Infile.rdstate() & std::fstream::eofbit) != 0)
-		return (Nounouille);
-	index = Nounouille.find(this->_s1, 0);
+		return (line);
+	index = line.find(this->_s1, 0);
 	while (index != std::string::npos)
 	{
-		Nounouille.erase(index, this->_s1.size());
-		Nounouille.insert(index, this->_s2);
-		index = Nounouille.find(this->_s1, index + this->_s1.size());
+		line.erase(index, this->_s1.size());
+		line.insert(index, this->_s2);
+		index = line.find(this->_s1, index + this->_s1.size());
 	}
-	return (Nounouille);
+	return (line);
 }
 
 void Replace::Transform(void)
