@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:48:39 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/03/07 12:09:43 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:16:48 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ ClapTrap::ClapTrap(const ClapTrap &copy)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called for " << this->getName() << std::endl;
+	std::cout << "Destructor called for ClapTrap " << this->getName() << std::endl;
 }
 
 void ClapTrap::attack(const std::string &target)

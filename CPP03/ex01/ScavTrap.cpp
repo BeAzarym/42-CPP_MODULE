@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:48:00 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/03/07 12:03:01 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:16:59 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 }
 ScavTrap::~ScavTrap()
 {
-	std::cout << "Destructor called for " << this->_Name << std::endl;
+	std::cout << "Destructor called for ScavTrap " << this->_Name << std::endl;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
