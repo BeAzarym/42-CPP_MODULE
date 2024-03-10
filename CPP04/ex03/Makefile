@@ -1,0 +1,36 @@
+NAME	=	Materia
+
+SRC	=	main.cpp \
+		AMateria.cpp \
+		Character.cpp \
+		Ice.cpp \
+		Cure.cpp \
+		MateriaSource.cpp \
+		
+
+OBJS		=	$(SRC:.cpp=.o)
+
+FLAGS = -Wall -Wextra -Werror -std=c++98
+
+CC	=	c++
+
+RM	=	@rm -rf
+
+.cpp.o:
+	$(CC) $(FLAGS) -c $< -o $(<:.cpp=.o)
+
+all:	$(NAME)
+
+
+$(NAME):	$(OBJS)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
+
+clean:
+	$(RM) $(OBJS)
+
+fclean:	clean
+	$(RM) $(NAME)
+
+re:	fclean all
+
+.PHONY:	all re clean fclean
