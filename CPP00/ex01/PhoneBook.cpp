@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
+/*   By: cchabeau <cchabeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:05:20 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/02/29 15:43:11 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:41:58 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ std::string PhoneBook::_getDataFromInput(std::string Data)
 	std::getline(std::cin, input);
 	while (input.empty())
 	{
+		if (!std::cin.good())
+		{
+			break;
+		}
 		std::cout << "Input empty" << std::endl;
 		std::getline(std::cin, input);
 	}
@@ -65,6 +69,11 @@ void PhoneBook::search()
 	std::getline(std::cin, str);
 	while(str.empty() || !isdigit(str[0]))
 	{
+		if (!std::cin.good())
+		{
+			std::cout << "Invalid input" << std::endl;
+			return;
+		}	
 		std::cout << "Invalid Index, please retry" << std::endl;
 		std::getline(std::cin, str);
 	}
