@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchabeau <cchabeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:05:20 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/03/12 13:41:58 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:54:56 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,23 @@ void PhoneBook::search()
 	this->_printPhoneBook();
 	std::cout << "Enter the index: " << std::endl;
 	std::getline(std::cin, str);
-	while(str.empty() || !isdigit(str[0]))
+	while(str.empty() || !isdigit(str[0]) || str.size() > 1)
 	{
 		if (!std::cin.good())
 		{
 			std::cout << "Invalid input" << std::endl;
 			return;
-		}	
-		std::cout << "Invalid Index, please retry" << std::endl;
+		}
+		std::cout << "Invalid Index, please retry" << std::endl << "$>";
 		std::getline(std::cin, str);
 	}
-	this->_printContact(std::stoi(str));
+	const char *s = str.c_str();
+	if (s[0] - 48 > 7)
+	{
+		std::cout << "Index is too high, please retry" << std::endl;
+		return;
+	}
+	this->_printContact(s[0] - 48);
 	return ;
 }
 

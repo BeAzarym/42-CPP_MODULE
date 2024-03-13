@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 19:35:47 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/02/29 23:55:58 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:29:41 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void Account::displayAccountsInfos(void)
 }
 Account::Account(void)
 {
-	
 }
 
 Account::Account(int initial_deposit)
@@ -69,7 +68,7 @@ void Account::makeDeposit(int deposit)
 	std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount;
 	this->_amount += deposit;
 	this->_nbDeposits++;
-	std::cout << ";deposit:" << deposit << ";nb_deposits:" << this->_nbDeposits << std::endl;
+	std::cout << ";deposit:" << deposit << ";amount:" << this->_amount << ";nb_deposits:" << this->_nbDeposits << std::endl;
 	Account::_totalAmount += deposit;
 	Account::_totalNbDeposits++;
 }
@@ -81,19 +80,19 @@ bool Account::makeWithdrawal(int withdrawal)
 	if (this->_amount < withdrawal)
 	{
 		std::cout << ";withdrawal:refused" << std::endl;
-		return false;
+		return (false);
 	}
 	this->_amount -= withdrawal;
 	this->_nbWithdrawals++;
-	std::cout << ";withdrawal:" << withdrawal << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
+	std::cout << ";withdrawal:" << withdrawal << ";amount:" <<  this->_amount <<";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 	Account::_totalAmount -= withdrawal;
 	Account::_totalNbWithdrawals++;
-	return true;
+	return (true);
 }
 
 int Account::checkAmount(void) const
 {
-	return this->_amount;
+	return (this->_amount);
 }
 
 void Account::displayStatus(void) const
@@ -104,7 +103,10 @@ void Account::displayStatus(void) const
 
 void Account::_displayTimestamp(void)
 {
-	time_t time;
-	time = std::time(NULL);
-	std::cout << std::put_time(localtime(&time), "[%Y%m%d_%H%M%S] ");
+	time_t	t;
+	char tmp[18];
+
+	time(&t);
+	strftime(tmp, sizeof(tmp), "[%Y%m%d_%H%M%S]", localtime(&t));
+	std::cout << tmp << " ";
 }
