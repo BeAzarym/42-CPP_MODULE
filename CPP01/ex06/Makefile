@@ -5,7 +5,7 @@ SRC	=	main.cpp \
 
 OBJS		=	$(SRC:.cpp=.o)
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 CC	=	c++
 

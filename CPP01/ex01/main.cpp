@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 00:07:04 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/03/01 00:46:57 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:11:40 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ int main(void)
 
 	for (int i = 0; i < 7; i++)
 		Horde[i].announce();
+
+	delete[] Horde;
 	return (0);
 }

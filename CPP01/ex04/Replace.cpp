@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 19:29:07 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/03/04 21:26:01 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:29:16 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,17 @@ Replace::Replace()
 Replace::Replace(std::string infile, std::string s1, std::string s2)
 {
 	std::string outfile = infile + ".replace";
-	this->_Infile.open(infile, std::fstream::in);
+	this->_Infile.open(infile.c_str(), std::fstream::in);
 	if ((this->_Infile.rdstate() & std::fstream::failbit) != 0)
 	{
 		std::cout << "Error: Can't open " << infile << std::endl;
-		delete this;
-		exit(EXIT_FAILURE);
+		return;
 	}
-	this->_Outfile.open(outfile, std::fstream::out);
+	this->_Outfile.open(outfile.c_str(), std::fstream::out);
 	if ((this->_Outfile.rdstate() & std::fstream::failbit) != 0)
 	{
 		std::cout << "Error: Can't open " << outfile << std::endl;
-		delete this;
-		exit(EXIT_FAILURE);
+		return;
 	}
 	this->_s1 = s1;
 	this->_s2 = s2;
@@ -54,7 +52,7 @@ std::string Replace::Replaceline(void)
 	{
 		line.erase(index, this->_s1.size());
 		line.insert(index, this->_s2);
-		index = line.find(this->_s1, index + this->_s1.size());
+		index = line.find(this->_s1, index + this->_s2.size());
 	}
 	return (line);
 }
