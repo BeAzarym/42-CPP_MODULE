@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:06:40 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/03/04 22:17:29 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:08:32 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,34 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Constructor called" << std::endl;
+	// std::cout << "Constructor called" << std::endl;
 	this->_FixedNum = 0;
 }
 Fixed::Fixed(const Fixed &f)
 {
-	std::cout << "Copy Constructor called" << std::endl;
+	// std::cout << "Copy Constructor called" << std::endl;
 	*this = f;
 }
 
 Fixed::Fixed(const float n)
 {
-	std::cout << "Constructor float called " << std::endl;
+	// std::cout << "Constructor float called " << std::endl;
 	this->_FixedNum = roundf(n * (1 << this->fractionnal_bit));
 }
 Fixed::Fixed(const int n)
 {
-	std::cout << "Constructor int called" << std::endl;
+	// std::cout << "Constructor int called" << std::endl;
 	this->_FixedNum = n << this->fractionnal_bit;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &f)
 {
-	std::cout << "Copy assignement operator called" << std::endl;
+	// std::cout << "Copy assignement operator called" << std::endl;
 	if (this != &f)
 		this->_FixedNum = f._FixedNum;
 	return (*this);
@@ -91,35 +91,33 @@ Fixed Fixed::operator*(const Fixed &f) const
 {
 	Fixed x;
 
-	x.setRawBit(this->getRawBits() * f.getRawBits() >> this->fractionnal_bit);
+	x = this->toFloat() * f.toFloat();
 	return (x);
 }
 Fixed Fixed::operator/(const Fixed &f) const
 {
 	Fixed x;
 
-	x.setRawBit((this->getRawBits() << this->fractionnal_bit) / f.getRawBits());
+	x = this->toFloat() / f.toFloat();
 	return (x);
 }
 
 Fixed Fixed::operator++(int)
 {
-	Fixed Cpy(*this);
 	this->_FixedNum++;
-	return (Cpy);
+	return (*this);
 }
 
 Fixed &Fixed::operator++()
 {
-	this->_FixedNum++;
+	this->_FixedNum += 1;
 	return (*this);
 }
 
 Fixed Fixed::operator--(int)
 {
-	Fixed Cpy(*this);
-	this->_FixedNum--;
-	return (Cpy);
+	this->_FixedNum-= 1;
+	return (*this);
 }
 Fixed &Fixed::operator--(void)
 {
