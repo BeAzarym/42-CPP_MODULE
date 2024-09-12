@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
+/*   By: cchabeau <cchabeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:41:09 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/08/31 10:35:25 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:02:27 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 class AForm
 {
 	private:
-		const std::string	_name;
+		const std::string			_name;
 		std::string			_target;
 		bool				_isSigned;
 		const int 			_gradeSign;

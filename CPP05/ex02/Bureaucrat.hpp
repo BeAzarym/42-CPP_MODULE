@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
+/*   By: cchabeau <cchabeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 11:21:14 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/08/26 11:23:21 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:58:57 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class Bureaucrat
 {
 	private:
 		const std::string	_name;
-		int					_grade;
+		int					_gradeSign;
+		int					_gradeExec;
 
 	public:
 		Bureaucrat(void);
@@ -39,10 +40,12 @@ class Bureaucrat
 		Bureaucrat &operator=(const Bureaucrat &copy);
 
 		std::string getName(void) const;
-		int 		getGrade(void) const;
+		int 		getGradeSign(void) const;
+		int			getGradeExec(void) const;
 		void 		incrementGrade(void);
 		void 		decrementGrade(void);
-		void 		signForm(Form &form) const;
+		void 		signForm(AForm &form) const;
+		void		executeForm(AForm &form) const;
 
 		class GradeTooLowException : public std::exception
 		{
