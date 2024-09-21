@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchabeau <cchabeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 11:21:14 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/09/12 15:58:57 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/09/21 11:25:32 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # include <string>
 # include <iostream>
 # include <stdexcept>
+# include "AForm.hpp"
 
 # define RED "\033[31m"
 # define GREY "\033[90m"
 # define BOLD_BLUE "\033[1;34m"
 # define RESET "\033[0m"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -33,7 +34,7 @@ class Bureaucrat
 
 	public:
 		Bureaucrat(void);
-		Bureaucrat(const std::string name, const int grade);
+		Bureaucrat(const std::string name, const int gradeSign, const int gradeExec);
 		Bureaucrat(const Bureaucrat &copy);
 		~Bureaucrat(void);
 
@@ -45,7 +46,7 @@ class Bureaucrat
 		void 		incrementGrade(void);
 		void 		decrementGrade(void);
 		void 		signForm(AForm &form) const;
-		void		executeForm(AForm &form) const;
+		void 		executeForm(const AForm &form);
 
 		class GradeTooLowException : public std::exception
 		{

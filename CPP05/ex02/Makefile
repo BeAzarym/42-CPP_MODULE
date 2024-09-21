@@ -1,9 +1,12 @@
 NAME	=	Bureaucrat
 
 SRC	=	main.cpp \
-		Form.cpp \
+		AForm.cpp \
 		Bureaucrat.cpp \
-
+		PresidentialPardonForm.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		
 OBJS		=	$(SRC:.cpp=.o)
 
 FLAGS = -Wall -Wextra -Werror -std=c++98

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchabeau <cchabeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:41:09 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/09/12 17:02:27 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/09/21 11:10:52 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,16 @@
 # define BOLD_BLUE "\033[1;34m"
 # define RESET "\033[0m"
 
+class Bureaucrat;
+
 class AForm
 {
 	private:
 		const std::string			_name;
-		std::string			_target;
-		bool				_isSigned;
 		const int 			_gradeSign;
 		const int 			_gradeExec;
+		std::string			_target;
+		bool				_isSign;
 		
 	public:
 		AForm(void);
