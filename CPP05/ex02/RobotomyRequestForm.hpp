@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:07:33 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/09/21 11:21:51 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:30:27 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "AForm.hpp"
 #include <cstdlib>
+#include <ctime>
 
 
 class RobotomyRequestForm : public AForm

@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:12:46 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/09/21 11:22:16 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:30:09 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void RobotomyRequestForm::execute(Bureaucrat &executor) const
 		throw(GradeTooLowException());
 
 	std::cout << "ZZZzzzzzzZZZZZ *Drilling Noise*" << std::endl;
+	
+	std::srand(std::time(NULL));
 	if (std::rand() % 2)
 		std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
 	else
