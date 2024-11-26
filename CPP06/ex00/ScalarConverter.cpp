@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:20:08 by cchabeau          #+#    #+#             */
-/*   Updated: 2024/11/26 21:18:07 by cchabeau         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:30:18 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,11 +147,10 @@ void ScalarConverter::_convertToFloat(std::string str)
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	
-	if (static_cast<int>(x) < INT_MIN || static_cast<int>(x) > INT_MAX)
+	if (static_cast<int>(x) < INT_MIN || static_cast<int>(x) > INT_MAX || x != static_cast<int>(x))
 		std::cout << "int: overflow" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(x) << std::endl;
-	
 	if (x == static_cast<int>(x))
 	{
 		std::cout << "float: " << x << ".0f" << std::endl;
@@ -185,7 +184,7 @@ void ScalarConverter::_convertToDouble(std::string str)
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	
-	if (static_cast<int>(x) < INT_MIN || static_cast<int>(x) > INT_MAX)
+	if (static_cast<int>(x) < INT_MIN || static_cast<int>(x) > INT_MAX || x != static_cast<int>(x))
 		std::cout << "int: overflow" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(x) << std::endl;
