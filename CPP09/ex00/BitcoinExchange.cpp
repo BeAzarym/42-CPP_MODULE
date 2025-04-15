@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:24:57 by cchabeau          #+#    #+#             */
-/*   Updated: 2025/04/15 14:39:24 by cchabeau         ###   ########.fr       */
+/*   Updated: 2025/04/15 14:57:23 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ BitcoinExchange::BitcoinExchange()
 
 	fs.open("data.csv", std::ios::in);
 	if (!fs.is_open())
-	{
-		std::cerr << "[ERROR] Failed to open data csv file." << std::endl;
-		return;
-	}
+		throw BitcoinExchange::FailedToLoadCSV();
 	std::getline(fs, buffer);
 	while (!fs.eof())
 	{
@@ -130,4 +127,9 @@ bool	BitcoinExchange::_isDateValid(const std::string &str)
 		return false;
 
 	return (timeinfo.tm_year == copy.tm_year && timeinfo.tm_mon == copy.tm_mon && timeinfo.tm_mday == copy.tm_mday);
+}
+
+const char *BitcoinExchange::FailedToLoadCSV::what() const throw()
+{
+	return ("[ERROR] Failed to open data csv file.");
 }

@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:24:33 by cchabeau          #+#    #+#             */
-/*   Updated: 2025/04/15 13:55:27 by cchabeau         ###   ########.fr       */
+/*   Updated: 2025/04/15 14:55:22 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ class BitcoinExchange
 		~BitcoinExchange();
 
 		void computeValue(const std::string &inputFile);
+
+		class FailedToLoadCSV : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 };
 
 #endif
