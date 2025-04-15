@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:24:57 by cchabeau          #+#    #+#             */
-/*   Updated: 2025/04/15 14:57:23 by cchabeau         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:03:03 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ BitcoinExchange::BitcoinExchange()
 		this->_buffer.insert(std::pair<std::string, float>(date, value));
 	}
 	fs.close();
+	if (this->_buffer.size() < 1)
+		throw BitcoinExchange::EmptyCSV();
 	std::cout << "[INFO] Data csv file loaded with success." << std::endl;
 }
 
@@ -132,4 +134,9 @@ bool	BitcoinExchange::_isDateValid(const std::string &str)
 const char *BitcoinExchange::FailedToLoadCSV::what() const throw()
 {
 	return ("[ERROR] Failed to open data csv file.");
+}
+
+const char *BitcoinExchange::EmptyCSV::what() const throw()
+{
+	return ("[ERROR] CSV File is empty.");
 }
