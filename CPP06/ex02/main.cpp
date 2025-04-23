@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:26:52 by cchabeau          #+#    #+#             */
-/*   Updated: 2025/01/28 17:49:19 by cchabeau         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:14:41 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void identification(Base &base)
 {
 	try
 	{
-		dynamic_cast<A &>(base);
+		A &TypeA = dynamic_cast<A &>(base);
+		(void)TypeA;
 		std::cout << "Identification is formal, the type is A." << std::endl;
 	}
 	catch (const std::exception &e)
@@ -84,7 +85,8 @@ void identification(Base &base)
 	
 	try
 	{
-		dynamic_cast<B &>(base);
+		B &TypeB = dynamic_cast<B &>(base);
+		(void)TypeB;
 		std::cout << "Identification is formal, the type is B." << std::endl;
 	}
 	catch (const std::exception &e)
@@ -94,7 +96,8 @@ void identification(Base &base)
 
 	try
 	{
-		dynamic_cast<C &>(base);
+		C &TypeC = dynamic_cast<C &>(base);
+		(void)TypeC;
 		std::cout << "Identification is formal, the type is C." << std::endl;
 	}
 	catch (const std::exception &e)
