@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:10:46 by cchabeau          #+#    #+#             */
-/*   Updated: 2025/04/17 12:26:32 by cchabeau         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:56:49 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <list>
 #include <algorithm>
 #include <iterator>
-#include <ctime>
+#include <sys/time.h>
 
 void parseInput(char **argv, std::vector<int> &int_vector, std::list<int> &int_list);
 

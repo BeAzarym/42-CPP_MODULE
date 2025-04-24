@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:11:20 by cchabeau          #+#    #+#             */
-/*   Updated: 2025/04/17 22:32:56 by cchabeau         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:08:05 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
+	struct timeval start, end;
 	std::vector<int> vector, sorted_vector;
 	std::list<int> list, sorted_list;	
 	
@@ -27,35 +28,24 @@ int main(int argc, char **argv)
 
 	std::cout << "BEFORE:	";
 	printStack(vector);
-	std::clock_t start = std::clock();
+	gettimeofday(&start, 0);
 	sorted_vector = ProcessFordJohnsonSort(vector);
-	std::clock_t end = std::clock();
+	gettimeofday(&end, 0);
 
 	std::cout << "AFTER:	";
 	printStack(sorted_vector);
+	std::cout << "Time to process a range of " << vector.size() << " elements with std::vector : " << end.tv_usec - start.tv_usec << " us." << std::endl;
 
-	double elapse = (end - start) * 1000000.0 / CLOCKS_PER_SEC;
-    
-	std::cout << std::fixed << std::setprecision(5);
-	std::cout << "Time to process a range of " << vector.size() << " elements with std::vector : " << elapse << " us." << std::endl;
-
-
-	start = std::clock();
+	gettimeofday(&start, 0);
 	sorted_list = ProcessFordJohnsonSort(list);
-	end = std::clock();
-	elapse = (end - start) * 1000000.0 / CLOCKS_PER_SEC;
-    
-	std::cout << std::fixed << std::setprecision(5);
-	std::cout << "Time to process a range of " << vector.size() << " elements with std::list : " << elapse << " us." << std::endl;
+	gettimeofday(&end, 0);
+	std::cout << "Time to process a range of " << vector.size() << " elements with std::list : " << end.tv_usec - start.tv_usec << " us." << std::endl;
 
-
-	start = std::clock();
+	gettimeofday(&start, 0);
 	std::sort(vector.begin(), vector.end());
-	end = std::clock();
-	elapse = (end - start) * 1000000.0 / CLOCKS_PER_SEC;
+	gettimeofday(&end, 0);
     
-	std::cout << std::fixed << std::setprecision(5);
-	std::cout << "Time to process a range of " << vector.size() << " elements with std::vector and std::sort : " << elapse << " us." << std::endl;
+	std::cout << "Time to process a range of " << vector.size() << " elements with std::vector and std::sort : " << end.tv_usec - start.tv_usec << " us." << std::endl;
 
 
 
