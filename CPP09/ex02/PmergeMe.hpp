@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:10:46 by cchabeau          #+#    #+#             */
-/*   Updated: 2025/04/24 19:56:49 by cchabeau         ###   ########.fr       */
+/*   Updated: 2025/04/29 13:53:34 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,6 @@ class NumberDuplicate : public std::exception
 public:
 	const char *what() const throw();
 };
-
-static std::vector<int> computeJacobsthal(int n)
-{
-	std::vector<int> res;
-	int j0, j1, next;
-
-	j0 = 0;
-	j1 = 1;
-	while (j1 < n)
-	{
-		if (res.empty() || res.back() != j1)
-			res.push_back(j1);
-		next = j1 + 2 * j0;
-		j0 = j1;
-		j1 = next;
-	}
-	return res;
-}
 
 template <typename T>
 void printStack(const T &input)
@@ -94,10 +76,23 @@ T ProcessFordJohnsonSort(const T &input)
 		it = ++next;
 	}
 
-	// std::sort(large.begin(), large.end());
 	large = ProcessFordJohnsonSort(large);
 
-	std::vector<int> jacobsthalIndice = computeJacobsthal(static_cast<int>(small.size()));
+
+	std::vector<int> res;
+	int j0, j1, next;
+
+	j0 = 0;
+	j1 = 1;
+	while (j1 < static_cast<int>(small.size()))
+	{
+		if (res.empty() || res.back() != j1)
+			res.push_back(j1);
+		next = j1 + 2 * j0;
+		j0 = j1;
+		j1 = next;
+	}
+	std::vector<int> jacobsthalIndice = res;
 	for (int i = 0; i < static_cast<int>(small.size()); ++i)
 	{
 		if (std::find(jacobsthalIndice.begin(), jacobsthalIndice.end(), i) == jacobsthalIndice.end())

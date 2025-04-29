@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:24:57 by cchabeau          #+#    #+#             */
-/*   Updated: 2025/04/15 15:03:03 by cchabeau         ###   ########.fr       */
+/*   Updated: 2025/04/29 13:32:27 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ void BitcoinExchange::_findChange(std::map<std::string, float> input)
 	std::map<std::string, float>::iterator input_it = input.begin();
 
 	buffer_it = this->_buffer.lower_bound(input_it->first);
-	std::cout << input_it->first << " => " <<  input_it->second << " = " << (buffer_it->second * input_it->second) << std::endl;
+	if (buffer_it->first != input_it->first)
+		if (buffer_it != this->_buffer.begin())
+			buffer_it--;
+	std::cout << input_it->first << " => " << input_it->second << " = " << (buffer_it->second * input_it->second) << std::endl;
 }
 
 std::map<std::string, float> BitcoinExchange::_parseInput(std::string &str)
@@ -118,6 +121,16 @@ bool	BitcoinExchange::_isDateValid(const std::string &str)
 	month = std::atoi(str.substr(5, 7).c_str());
 	day = std::atoi(str.substr(8, 10).c_str());
 
+
+	if (day == 28 && month == 2)
+	{
+		if( years % 400 ==0 || (years % 4 == 0 && years % 100 != 0))
+			;
+		else
+		{
+			return false;
+		}
+		}
 	std::tm timeinfo = {};
 	timeinfo.tm_year = years - 1900;
 	timeinfo.tm_mon = month - 1;
