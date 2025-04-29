@@ -6,7 +6,7 @@
 /*   By: cchabeau <cchabeau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:41:18 by cchabeau          #+#    #+#             */
-/*   Updated: 2025/04/15 16:07:09 by cchabeau         ###   ########.fr       */
+/*   Updated: 2025/04/29 13:37:50 by cchabeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ int RPN(std::string &str)
 				return -1;
 			}
 		}
+	}
+	if (stack.size() > 1)
+	{
+		std::cerr << "Error: Invalide computation" << std::endl;
+		return -1;
 	}
 	std::cout << stack.top() << std::endl;
 	return 0;
